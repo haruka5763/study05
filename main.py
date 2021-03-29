@@ -2,6 +2,8 @@ import csv
 import pandas as pd
 import sys
 import datetime
+import eel
 
 
-develop
+eel.init("web")
+eel.start("main.html")
