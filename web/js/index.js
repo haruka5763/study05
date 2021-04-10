@@ -12,8 +12,8 @@ document.getElementById("entry").onclick = function() {
   };
 
 document.getElementById("end").onclick = function() {
-  code = int(0)
-  count = int(0)
+  code = 0
+  count = 0
   eel.receive_order(code, count);
   };
 

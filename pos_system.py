@@ -9,6 +9,8 @@ INPUT_CSV = "./item_master.csv"
 RECEIPT = "./receipt"
 
 
+
+
 ### 商品クラス
 class Item:
     def __init__(self,item_code,item_name,price):
@@ -121,18 +123,18 @@ class Order:
         self.make_receipt(self.datetime_receipt)
         self.make_receipt("==============================")
 
+# マスタ登録 Task3
+csv = INPUT_CSV
+item_master=item_master_csv(csv)
+# Order classのインスタンス生成(グローバル領域)
+order = Order(item_master)
 
 ### メイン処理
 def main():
     
-    # マスタ登録 Task3
-    csv = INPUT_CSV
-    item_master=item_master_csv(csv)
-    # Order classのインスタンス生成
-    order = Order(item_master)
+
 
     print("注文開始")
-
 
 
     

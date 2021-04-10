@@ -13,10 +13,7 @@ def main():
     pos_system.main()
 @eel.expose
 def receive_order(code, count):
-    pos_system.Order.receive_order(code, count)
     pos_system.order.receive_order(code, count)
-    pos_system.receive_order(code, count)
-
 
 eel.init("web")
 eel.start("index.html")
