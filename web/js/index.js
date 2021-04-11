@@ -1,19 +1,15 @@
 
-
-document.getElementById("start").onclick = function() {
-  eel.main();
+function entry_fnc() {
+  const codes = Document.getElementById("item_code").value;
+  const counts = Document.getElementById("order_count").value;
+  eel.receive_order(codes, counts);
+  const console = Document.getElementById("console_area");
+  console.value = "注文番号："+codes+"/n"+"注文数："+counts+"/n";
   };
 
-
-document.getElementById("entry").onclick = function() {
-  code = Document.getElementById("item_code");
-  count = Document.getElementById("order_count");
-  eel.receive_order(code, count);
-  };
-
-document.getElementById("end").onclick = function() {
-  code = 0
-  count = 0
+function end_fnc() {
+  const code = 0
+  const count = 0
   eel.receive_order(code, count);
   };
 

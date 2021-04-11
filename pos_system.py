@@ -5,8 +5,9 @@ import datetime
 
 
 # 定数
-INPUT_CSV = "./item_master.csv"
 RECEIPT = "./receipt"
+INPUT_CSV = "./item_master.csv"
+
 
 
 
@@ -56,21 +57,23 @@ class Order:
     def make_receipt(self, text):
         with open(RECEIPT+"/"+f"{self.datetime_receipt}.txt","a",encoding="utf-8_sig") as f:
             f.write(text+"\n")
-            eel.view_log_js("『{}』はいます".format(word))
+            return(text+"\n")
 
     def receive_order(self, code, count):
         print("注文登録を開始します")
-        while True:
-            if int(code) != 0:
-                order_code =  code
-                order_count = count
-                self.item_order_list.append(order_code)
-                self.item_count_list.append(order_count)
-                print("注文を受け付けました")
-            else:
-                print("ご注文ありがとうございました!")
-                sys.exit
-                break
+        if int(code) != 0:
+            order_code =  code
+            order_count = count
+            self.item_order_list.append(order_code)
+            self.item_count_list.append(order_count)
+            print("注文を受け付けました")
+            print (order_code)
+            print (order_count)
+        else:
+            print("ご注文ありがとうございました!")
+            print(self.item_order_list)
+            print(self.item_count_list)
+            sys.exit
 
 
     # オーダーの詳細情報取得 Task1
@@ -123,10 +126,9 @@ class Order:
         self.make_receipt(self.datetime_receipt)
         self.make_receipt("==============================")
 
-# マスタ登録 Task3
+# Orderクラスのインスタンス化（グローバル領域）
 csv = INPUT_CSV
 item_master=item_master_csv(csv)
-# Order classのインスタンス生成(グローバル領域)
 order = Order(item_master)
 
 ### メイン処理

@@ -16,7 +16,7 @@ h2:before {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 80%;
     height: 10px;
     content: '';
     border-top: 2px solid #000;
@@ -38,7 +38,7 @@ h2:before {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 100%;
+    width: 80%;
     height: 10px;
     content: '';
     background-image: -webkit-repeating-linear-gradient(135deg, #000, #000 1px, transparent 2px, transparent 5px);
@@ -50,7 +50,7 @@ h2:before {
 .card_1 {
     background-color: #fff;
     height: 200px;
-    width: 100%;
+    width: 80%;
     margin: 1rem 0rem;
     padding: 1rem;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
@@ -60,7 +60,7 @@ h2:before {
 .card_2 {
     background-color: #fff;
     height: 200px;
-    width: 100%;
+    width: 80%;
     margin: 1rem 0rem;
     padding: 1rem;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
@@ -111,4 +111,10 @@ a.btn--blue:hover {
     background: #93ddff;
     border-bottom: solid 1px #627295;
     border-radius: 3px;
+}
+
+textarea {
+  width: 80%;
+  height: 200px;
+  margin: auto;
 }

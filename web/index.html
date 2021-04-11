@@ -18,19 +18,19 @@
             <input id="item_code" type="text"><br>
             　注文個数<br>
             <input id="order_count" type="text"><br><br>
-            <a href="" id ="entry" class="btn btn--orange">登録</a><br><br>
+            <a href="" id ="entry" class="btn btn--orange" onclick="entry_fnc()">登録</a><br><br>
             
-            <a href="" id = "start" class="btn btn--blue">注文を開始する</a>
-            <a href="" id = "end" class="btn btn--blue">注文終了</a><br><br>
+            <!-- <a href="" id = "start" class="btn btn--blue">注文を開始する</a> -->
+            <a href="" id = "end" class="btn btn--blue" onclick="end_fnc()">注文終了</a><br><br>
 
             お預かり金額<br>
             <input id="receive_account" type="text">
             <a href="" class="btn btn--orange">登録</a><br>
         </div>
         <div class="sub_title">注文内容確認画面</div>
-        <div class="card_2">
-            <textarea id="order" class="order_detail"></textarea><br>
-        </div>
+        <form class="card_2">
+            <textarea id="console_area">textareaです</textarea><br>
+        </form>
     </div>
 
     <!-- eeljsテンプレート -->

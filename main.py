@@ -6,11 +6,15 @@ import eel
 import pos_system
 
 
+INPUT_CSV = "./item_master.csv"
+
+
 # JSからアクセス可能に
 @eel.expose
 # 以下、jsで呼び出したい処理
 def main():
     pos_system.main()
+
 @eel.expose
 def receive_order(code, count):
     pos_system.order.receive_order(code, count)
