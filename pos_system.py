@@ -2,6 +2,7 @@ import csv
 import pandas as pd
 import sys
 import datetime
+import eel
 
 
 # 定数
@@ -57,29 +58,28 @@ class Order:
     def make_receipt(self, text):
         with open(RECEIPT+"/"+f"{self.datetime_receipt}.txt","a",encoding="utf-8_sig") as f:
             f.write(text+"\n")
-            return(text+"\n")
+            eel.receipt_js(text+"\n")
 
     def receive_order(self, code, count):
-        print("注文登録を開始します")
         if int(code) != 0:
             order_code =  code
             order_count = count
             self.item_order_list.append(order_code)
             self.item_count_list.append(order_count)
-            print("注文を受け付けました")
-            print (order_code)
-            print (order_count)
+            eel.console_js("注文を受け付けました")
+            eel.console_js (f"注文番号：{order_code}")
+            eel.console_js (f"注文数：{order_count}")
         else:
             print("ご注文ありがとうございました!")
-            print(self.item_order_list)
-            print(self.item_count_list)
-            sys.exit
+            eel.console_js(f"注文内容一覧{self.item_order_list}")
+            eel.console_js(f"注文数一覧{self.item_count_list}")
+            eel.console_js("注文終了")
+            # sys.exit
 
 
     # オーダーの詳細情報取得 Task1
     def order_detail(self):
-        print("オーダーが入りました")
-        print("************************")
+
         self.make_receipt("************************"+"\n"+"ご注文内容")
         self.make_receipt("************************")
 
@@ -92,30 +92,21 @@ class Order:
                 item_name = im[1]
                 item_price = im[2]
                 if int(order_code) == int(item_code):
-                    print(f"商品名：{item_name}")
-                    print(f"価格：￥{item_price}")
-                    print(f"注文数：{order_count}個")
                     subtotal_price = int(item_price)*int(order_count)
-                    print(f"小計：￥{subtotal_price}")
                     total_price = total_price + subtotal_price
                     self.make_receipt(f"商品名：{item_name}")
                     self.make_receipt(f"価格：￥{item_price}")
                     self.make_receipt(f"注文数：{order_count}個")
-                    self.make_receipt(f"小計：{subtotal_price}個")
-
-        print(f"合計金額：{total_price}")
-        print("************************")
-        self.make_receipt(f"合計金額：{total_price}")
+                    self.make_receipt(f"小計：￥{subtotal_price}")
+        self.make_receipt(f"合計金額：￥{total_price}")
         self.make_receipt("************************")
 
-        return total_price
+        return int(total_price)
 
-    def bill(self, total_price, receive_money):
-        
-        f"お預かり金額 : ￥{receive_money}"
-        print(f"お支払い金額：￥{total_price}")
+    def bill(self, receive_money, total_price):
+        # お預かり金額 : ￥{receive_money}
         return_money = int(receive_money)-int(total_price)
-        print(f"おつり：￥{return_money}")
+        # おつり：￥{return_money}
 
         self.make_receipt("******************************")
         self.make_receipt(f"お預かり金額：￥{receive_money}")
@@ -125,6 +116,9 @@ class Order:
         self.make_receipt("==============================")
         self.make_receipt(self.datetime_receipt)
         self.make_receipt("==============================")
+
+        return return_money
+
 
 # Orderクラスのインスタンス化（グローバル領域）
 csv = INPUT_CSV

@@ -67,6 +67,16 @@ h2:before {
     overflow: hidden;
 }
 
+.card_3 {
+  background-color: #fff;
+  height: 500px;
+  width: 80%;
+  margin: 1rem 0rem;
+  padding: 1rem;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
 .input {
   margin: 0rem 2rem;
 }
