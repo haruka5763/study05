@@ -10,14 +10,8 @@ function entry_fnc() {
   };
 
 // ==========登録商品キャンセル==========
-function entry_fnc() {
-  const codes = document.getElementById("item_code").value;
-  const counts = document.getElementById("order_count").value;
-  eel.receive_order(codes, counts);
-  // const console = document.getElementById("console_area");
-  // 入力エリアクリア
-  document.getElementById("item_code").value = "";
-  document.getElementById("order_count").value = "";
+function cancel_fnc() {
+  eel.clear_order();
   };
 
 // ==========注文終了==========

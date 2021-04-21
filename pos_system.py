@@ -71,6 +71,17 @@ class Order:
             eel.console_js(f"注文数一覧{self.item_count_list}")
             eel.console_js("注文終了")
 
+    #==========登録キャンセル（注文内容全件削除）==========
+    def clear_order(self):
+            eel.console_js("注文をキャンセルしました")
+            eel.console_js("=======================")
+            eel.console_js("【 キャンセル一覧 】")
+            eel.console_js(f"注文内容一覧{self.item_order_list}")
+            eel.console_js(f"注文数一覧{self.item_count_list}")
+            eel.console_js("=======================")
+            self.item_order_list.clear()
+            self.item_count_list.clear()
+
     #==========合計金額計算==========
     def order_detail(self):
 
