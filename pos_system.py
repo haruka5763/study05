@@ -5,12 +5,11 @@ import datetime
 import eel
 
 
-# 定数
+#==========定数==========
+# レシート保存パス
 RECEIPT = "./receipt"
+# 商品マスタCSV
 INPUT_CSV = "./item_master.csv"
-
-
-
 
 
 ### 商品クラス
@@ -19,11 +18,8 @@ class Item:
         self.item_code=item_code
         self.item_name=item_name
         self.price=price
-    
-    def get_price(self):
-        return self.price
 
-# csvからマスタ情報取得　Task3
+#==========CSVから商品マスタ情報の登録==========
 def item_master_csv(csv):
 
     try:
@@ -54,12 +50,13 @@ class Order:
         # メニュー一覧
         self.item_master=item_master
         self.datetime_receipt=datetime.datetime.now().strftime('%Y-%m-%d-%H-%M-%S')
-
+    
+    #==========レシート作成==========
     def make_receipt(self, text):
         with open(RECEIPT+"/"+f"{self.datetime_receipt}.txt","a",encoding="utf-8_sig") as f:
             f.write(text+"\n")
             eel.receipt_js(text+"\n")
-
+    #==========商品登録==========
     def receive_order(self, code, count):
         if int(code) != 0:
             order_code =  code
@@ -70,22 +67,16 @@ class Order:
             eel.console_js (f"注文番号：{order_code}")
             eel.console_js (f"注文数：{order_count}")
         else:
-            print("ご注文ありがとうございました!")
             eel.console_js(f"注文内容一覧{self.item_order_list}")
             eel.console_js(f"注文数一覧{self.item_count_list}")
             eel.console_js("注文終了")
-            # sys.exit
 
-
-    # オーダーの詳細情報取得 Task1
+    #==========合計金額計算==========
     def order_detail(self):
 
         self.make_receipt("************************"+"\n"+"ご注文内容")
         self.make_receipt("************************")
-
-
         total_price = 0
-
         for order_code, order_count in zip(self.item_order_list, self.item_count_list):
             for im in self.item_master:
                 item_code = im[0]
@@ -102,10 +93,11 @@ class Order:
         self.make_receipt("************************")
         return total_price
 
+    #==========おつり計算==========
     def bill(self, receive_money, total_price):
-        # お預かり金額
+        # 計算
         return_money = int(receive_money)-int(total_price)
-        
+        # レシート作成
         self.make_receipt("******************************")
         self.make_receipt(f"お預かり金額：￥{receive_money}")
         self.make_receipt(f"お支払金額：￥{total_price}")
@@ -114,7 +106,6 @@ class Order:
         self.make_receipt("==============================")
         self.make_receipt(self.datetime_receipt)
         self.make_receipt("==============================")
-
         # おつり
         return return_money
 
