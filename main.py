@@ -20,12 +20,17 @@ def receive_order(code, count):
     pos_system.order.receive_order(code, count)
 
 @eel.expose
-def bill(receive_money, total_price):
-    pos_system.order.bill(receive_money, total_price)
+def order_detail():
+    print("total_fnc実行")
+    total = pos_system.order.order_detail()
+    print(f"合計金額は{total}円です")
+    return int(total)
 
 @eel.expose
-def order_detail():
-    pos_system.order.order_detail()
+def bill(receive_money, total_price):
+    return_money = pos_system.order.bill(receive_money, total_price)
+    print(f"おつりは{return_money}円です")
+    return int(return_money)
 
 @eel.expose
 def make_receipt(text):

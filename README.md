@@ -15,11 +15,23 @@ UIとPython側を連動させて、POSシステムのデスクトップアプリ
 
 # ４（発展版）
 このPOSシステムに不足している機能を１つ考えて追加してください
-⇒注文キャンセル昨日
+⇒注文キャンセル機能：functionを作成して、合計金額からマイナスする項目を作成する必要あり
 
 
 【自分用メモ】
 
 <!-- Javascriptのアロー関数等、最新の書き方　　https://press.monaca.io/atsushi/5192 -->
 
+
+<!-- async await　の記述方法 -->
+async function total_fnc() {
+
+  let total = await eel.order_detail()();
+  console.log(total);
+  document.getElementById("total_price").value = total;
+
+};
+
+
+⇒　https://deecode.net/?p=809
 

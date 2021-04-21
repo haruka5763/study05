@@ -100,14 +100,12 @@ class Order:
                     self.make_receipt(f"小計：￥{subtotal_price}")
         self.make_receipt(f"合計金額：￥{total_price}")
         self.make_receipt("************************")
-
-        return int(total_price)
+        return total_price
 
     def bill(self, receive_money, total_price):
-        # お預かり金額 : ￥{receive_money}
+        # お預かり金額
         return_money = int(receive_money)-int(total_price)
-        # おつり：￥{return_money}
-
+        
         self.make_receipt("******************************")
         self.make_receipt(f"お預かり金額：￥{receive_money}")
         self.make_receipt(f"お支払金額：￥{total_price}")
@@ -117,6 +115,7 @@ class Order:
         self.make_receipt(self.datetime_receipt)
         self.make_receipt("==============================")
 
+        # おつり
         return return_money
 
 
@@ -127,12 +126,7 @@ order = Order(item_master)
 
 ### メイン処理
 def main():
-    
-
-
     print("注文開始")
-
-
     
 if __name__ == "__main__":
     main()

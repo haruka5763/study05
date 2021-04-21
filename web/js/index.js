@@ -20,16 +20,20 @@ function console_js(text){
   console_area.value += text + "\n"
 }
 
-function total_fnc() {
-  let total = eel.order_detail();
+
+async function total_fnc() {
+
+  let total = await eel.order_detail()();
   document.getElementById("total_price").value = total;
 
-  };
+};
 
-function bill_fnc() {
-  total_price = document.getElementById("total_price").value;
-  receive_money = document.getElementById("receive_money").value;
-  return_money = eel.bill(total_price, receive_money);
+
+
+async function bill_fnc() {
+  let total_price = document.getElementById("total_price").value;
+  let receive_money = document.getElementById("receive_money").value;
+  let return_money = await eel.bill(receive_money, total_price)();
 
   document.getElementById("return_money").value = return_money;
 
