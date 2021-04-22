@@ -20,7 +20,7 @@ class Item:
         self.price=price
 
 #==========CSVから商品マスタ情報の登録==========
-def item_master_csv(csv):
+def read_item_master_csv(csv):
 
     try:
         csv_input = pd.read_csv(csv, encoding="utf-8_sig")
@@ -123,7 +123,7 @@ class Order:
 
 # Orderクラスのインスタンス化（グローバル領域）
 csv = INPUT_CSV
-item_master=item_master_csv(csv)
+item_master=read_item_master_csv(csv)
 order = Order(item_master)
 
 ### メイン処理

@@ -6,9 +6,6 @@ import eel
 import pos_system
 
 
-INPUT_CSV = "./item_master.csv"
-
-
 # ==========main呼び出し==========
 @eel.expose
 def main():
