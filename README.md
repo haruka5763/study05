@@ -35,3 +35,12 @@ async function total_fnc() {
 
 ⇒　参考サイト　　https://deecode.net/?p=809
 
+
+【Classの呼び出し方】
+
+Classを読み込む場合は
+from pos_system import *
+としておき
+order = Order()
+のようにインスタンス化した上で
+order.get*** のように呼び出します。

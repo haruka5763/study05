@@ -122,9 +122,9 @@ class Order:
 
 
 # Orderクラスのインスタンス化（グローバル領域）
-csv = INPUT_CSV
-item_master=read_item_master_csv(csv)
-order = Order(item_master)
+# csv = INPUT_CSV
+# item_master=read_item_master_csv(csv)
+# order = Order(item_master)
 
 ### メイン処理
 def main():
